@@ -211,7 +211,7 @@ This produces the following output:
 
 ### Looping over the elements with a consumer function
 Another option for getting all elements of the stream is the ```foreach()``` operation.
-We have used it already, when we called ith with the standard Lua ```print``` function in the examples above.
+We have used it already when we called it with the standard Lua ```print``` function in the examples above.
 
 By using the ```foreach(consumer)``` operation you can loop over the stream's content by calling it with a *consumer function*.
 This is any function with a single parameter.
