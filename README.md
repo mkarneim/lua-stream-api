@@ -73,7 +73,7 @@ Supported Functions
 
 Getting Started
 ---------------
-The Lua Stream API consists of a single file calles ```stream.lua```. Just [download it](https://raw.githubusercontent.com/mkarneim/lua-stream-api/master/stream.lua) into
+The Lua Stream API consists of a single file called ```stream.lua```. Just [download it](https://raw.githubusercontent.com/mkarneim/lua-stream-api/master/stream.lua) into
 your project folder and include it into your program with ```require "stream"```.
 
 ### Creating a new stream from an array
