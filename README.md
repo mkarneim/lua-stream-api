@@ -245,7 +245,7 @@ end
 
 stream({1,2,3,4,5,6,7,8,9}).filter(is_even).foreach(print)
 ```
-This prints a stream of only even element to the output:
+This prints a stream of only even elements to the output:
 ```lua
 2
 4
