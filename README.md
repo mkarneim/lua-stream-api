@@ -61,7 +61,7 @@ Supported Functions
 * ```count() -> number```
 * ```forach(c) -> nil```
 * ```group(func) -> table```
-* ```iter() -> any```
+* ```iter() -> function```
 * ```last() -> any```
 * ```max(comparator) -> any```
 * ```min(comparator) -> any```
