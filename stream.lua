@@ -429,11 +429,11 @@ function stream(input)
     -- Returns a new stream created form the given interator function.
     local function _stream(iter)
         local result = {
-            -- Returns an iterator function for the elements of this stream.
+            -- Returns the iterator function for the elements of this stream.
             iter = function()
                 return iter
             end,
-            -- Returns the next (aka first) element of this stream, or null if the stream is empty.
+            -- Returns the next (aka first) element of this stream, or nil if the stream is empty.
             next = function()
                 return _next(iter)
             end,
