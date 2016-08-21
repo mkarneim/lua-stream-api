@@ -59,7 +59,7 @@ Supported Functions
 * ```avg() -> number```
 * ```collect(collector) -> any```
 * ```count() -> number```
-* ```forach(c) -> nil```
+* ```foreach(c) -> nil```
 * ```group(func) -> table```
 * ```iter() -> function```
 * ```last() -> any```
