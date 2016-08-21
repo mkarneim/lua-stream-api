@@ -29,7 +29,7 @@ which emits the following output:
 License and Dependencies
 ------------------------
 The source code of the Lua Stream API is in the PUBLIC DOMAIN.
-For more information please read the [LICENSE] file.
+For more information please read the [LICENSE](http://github.com/mkarneim/lua-stream-api/blob/master/LICENSE) file.
 
 Supported Functions
 -------------------
@@ -245,4 +245,6 @@ This prints a stream of only even element to the output:
 8
 ```
 
-*More to come ...*
+*... More to come ...*
+
+In the meanwhile you might want to browse the [examples](http://github.com/mkarneim/lua-stream-api/blob/master/examples.lua).
