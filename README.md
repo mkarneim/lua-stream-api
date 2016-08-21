@@ -196,7 +196,7 @@ consume all elements immediately. Instead it does it lazily - element by element
 So, if you break from the loop before all elements are consumed, there will be elements left on the stream.
 
 ### Looping over the elements using the next() operation
-If you dont want to consume all elements at once but rather getting the first element of the stream, you may want to use the ```next()``` operation.
+If you don't want to consume all elements at once but rather getting the first element of the stream, you may want to use the ```next()``` operation.
 
 ```lua
 st = stream({1,2,3})
