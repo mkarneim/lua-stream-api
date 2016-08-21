@@ -125,8 +125,15 @@ a [terminal operation](#terminal-operations) to the end of the pipeline it will
 actually never terminate:
 ```lua
 stream(zeros).foreach(print)
+0
+0
+0
+0
+.
+.
+.
+Arrrgh!
 ```
-
 To prevent this from happening you could ```limit``` the number of elements:
 
 ```lua
