@@ -227,7 +227,7 @@ Or, even shorter, as we already have seen, just use the reference to the built-i
 st.foreach(print)
 ```
 
-Now, that we know how how to access the elements of the stream, let's see how we can modify it.
+Now, that we know how to access the elements of the stream, let's see how we can modify it.
 ### Filtering Elements
 Element-filtering is, besides *element-mapping*, one of the most used applications of stream pipelines.
 
