@@ -193,6 +193,7 @@ This prints all elements of the stream to the output.
 
 Please note that although ```iter()``` is a [terminal operation](#terminal-operations), it does not
 consume all elements immediately. Instead it does it lazily - element by element - whenever the produced iterator function is called.
+So, if you break from the loop before all elements are consumed, there will be elements left on the stream.
 
 ### Looping over the elements using the next() operation
 If you dont want to consume all elements at once but rather getting the first element of the stream, you may want to use the ```next()``` operation.
