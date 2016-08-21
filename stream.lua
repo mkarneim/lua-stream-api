@@ -48,22 +48,19 @@ function stream(input)
     -- documentation of the corresponding stream function at the end of this file.
 
     local function _iterator(input)
-        local list = nil
         if input == nil then
             error("input must be of type table, but was nil")
-        elseif type(input)=="table" then
-            list = input
-        else
+        elseif type(input)~="table" then
             error("input must be of type table, but was a "..type(input)..": "..input)
         end
-        local len = #list
+        local len = #input
         local i = 0
         local result = function()
             i = i + 1
             if i > len then
                 return nil
             else
-                return list[i]
+                return input[i]
             end
         end
         return result
