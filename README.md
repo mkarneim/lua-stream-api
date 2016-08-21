@@ -222,12 +222,12 @@ The following code prints all elements to the output:
 st.foreach(function(e) print(e) end)
 ```
 
-Or, even shorter, as we already have seen, just use the reference to the built-in ```print()``` function:
+Or, even shorter, as we already have seen, just use the reference to Lua's built-in ```print()``` function:
 ```lua
 st.foreach(print)
 ```
 
-Now, that we know how to access the elements of the stream, let's see how we can modify it.
+Now that we know how to access the elements of the stream, let's see how we can modify it.
 ### Filtering Elements
 Element-filtering is, besides *element-mapping*, one of the most used applications of stream pipelines.
 
