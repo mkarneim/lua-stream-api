@@ -238,8 +238,7 @@ Now that we know how to access the elements of the stream, let's see how we can 
 ### Filtering Elements
 Element-filtering is, besides *element-mapping*, one of the most used applications of stream pipelines.
 
-It belongs to the group of [intermediate operations](#intermediate-operations). That means, when you append one of those to a stream, you actually are creating a new stream that is lazily backed by the former one, and which extends the pipeline by one more step.
-Please note, that only then, when you call a terminal operation on the last part of the pipeline, it will actually pull elements from upstream. This is where the name *pipeline* comes from: not until you "suck" at the end, the elements are pulled from the line of predecessing streams, going though all intermediate operations that are placed in between.
+It belongs to the group of [intermediate operations](#intermediate-operations). That means, when you append one of those to a stream, you actually are creating a new stream that is lazily backed by the former one, and which extends the pipeline by one more step. Not until you call a terminal operation on the last part of the pipeline it will actually pull elements from upstream, going through all intermediate operations that are placed in between. 
 
 By appending a ```filter(predicate)``` operation holding a *predicate function*, you can specify which elements should be passed downstream.
 A predicate function is any function with a single parameter. It should return ```true``` if the argument should be passed down the stream, ```false``` otherwise.
