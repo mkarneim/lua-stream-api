@@ -179,7 +179,7 @@ So far, so good. Now that you know how to create a stream, let's see what we can
 Further above you have seen that you can print all elements by using the ```forach()``` operation.
 But this is not the only way to do it.
 
-Since interally the stream alyways maintains an iterator function, you can also use it to process its content.
+Since internally the stream alyways maintains an iterator function, you can also use it to process its content.
 You can access it by calling ```iter()```.
 
 The following example shows how to process all elements with a standard Lua ```for ... in ... do``` loop:
