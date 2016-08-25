@@ -77,7 +77,7 @@ The Lua Stream API consists of a single file called ```stream.lua```. Just [down
 your project folder and include it into your program with ```require "stream"```.
 
 ### Creating a new stream from an array
-You can create a new stream from any *Lua table*, provided that the table is an array indexed with consecutive numbers from 1 to n, containing no ```nil``` values (or, to be more precise, only as trailing elements. ```nil``` values can never be part of the stream).
+You can create a new stream from any *Lua table*, provided that the table is an array *indexed with consecutive numbers from 1 to n*, containing no ```nil``` values (or, to be more precise, only as trailing elements. ```nil``` values can never be part of the stream).
 
 Here is an example:
 ```lua
