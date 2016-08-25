@@ -1,5 +1,5 @@
 --[[
-Lua Stream API
+Lua Stream API 1.0.0
 Created 2016 by Michael Karneim.
 For detailed documentation on the Lua Stream API please see <http://github.com/mkarneim/lua-stream-api>.
 
@@ -287,7 +287,7 @@ function stream(input)
         end
         local a1 = {}
         local a2 = {}
-        function pull(match,amatch,anomatch)
+        local function pull(match,amatch,anomatch)
             return function()
                 if amatch[1] ~= nil then
                     return table.remove(amatch,1)
