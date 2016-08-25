@@ -109,7 +109,7 @@ Later we will go into more details of the ```foreach()``` operation.
 For now, just let's have a look into another powerful alternative to create a stream.
 
 ### Creating a new stream form an iterator function
-Internally each stream works with a *Lua iterator function*.
+Internally each stream works with a [Lua iterator function](https://www.lua.org/pil/7.1.html).
 This is a parameterless function that produces a new element for each call.
 
 You can create a new stream from any such function:
@@ -151,8 +151,8 @@ completely empty.
 Another option to limit the number of elements is by limiting the iterator function itself.
 This can be done by returning a ```nil``` value when the production is finished.
 
-Here is an example. The ```range()``` function returns an iterator function
-that produces consecutive integers in a specified range:
+Here is an example. The ```range()``` function is an *iterator factory* that returns an iterator function
+which produces consecutive integers in a specified range:
 ```lua
 function range(s,e)
     local count = 0
