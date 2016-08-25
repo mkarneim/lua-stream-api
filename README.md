@@ -94,7 +94,7 @@ Of course, you can do it also *inline*:
 st = stream({100.23, -12, "42"})
 ```
 
-To print the contents to screen you can use ```foreach()```:
+To print the contents to screen you can use ```foreach(print)```:
 ```lua
 st.foreach(print)
 ```
