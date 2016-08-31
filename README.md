@@ -26,8 +26,8 @@ which emits the following output:
 5
 ```
 
-License and Dependencies
-------------------------
+License
+-------
 The source code of the Lua Stream API is in the PUBLIC DOMAIN.
 For more information please read the [LICENSE](http://github.com/mkarneim/lua-stream-api/blob/master/LICENSE) file.
 
