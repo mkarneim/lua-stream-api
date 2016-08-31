@@ -8,8 +8,8 @@ About
 -----
 The Lua Stream API brings the benefits of the stream-based functional programming style to
 the [Lua language](http://lua.org).
-It provides a function called ```stream``` that produces a simple wrapper object for
-Lua arrays and iterator functions. This gives you the power of composing several
+It provides a function called ```stream``` that produces a sequential stream of elements taken from
+an array or an iterator function. The stream object gives you the power of composing several
 stream operations into a single stream pipeline.
 
 For example, a simple stream pipeline could look like this:
