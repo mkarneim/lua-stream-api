@@ -154,18 +154,18 @@ This can be done by returning a ```nil``` value when the production is finished.
 Here is an example. The ```range()``` function is an *iterator factory* that returns an iterator function
 which produces consecutive integers in a specified range:
 ```lua
-function range(s,e)
-    local count = 0
+function range(s,e,step)
+    step = step or 1
+    local next = s
     -- return an iterator function for numbers from s to e
     return function()
-        local result = s+count
-        if result<=e then
-            count=count+1
-            return result
-        else
-            -- this will stop any consumer from doing more calls
+        if next > e then 
+            -- this should stop any consumer from doing more calls
             return nil
         end
+        local current = next
+        next = next + step
+        return current
     end
 end
 
