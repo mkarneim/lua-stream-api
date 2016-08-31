@@ -152,7 +152,7 @@ Another option to limit the number of elements is by limiting the iterator funct
 This can be done by returning a ```nil``` value when the production is finished.
 
 Here is an example. The ```range()``` function is an *iterator factory* that returns an iterator function
-which produces consecutive integers in a specified range:
+which produces consecutive numbers in a specified range:
 ```lua
 function range(s,e,step)
     step = step or 1
