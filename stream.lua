@@ -134,6 +134,24 @@ function stream(input)
         return result
     end
 
+    local function _pack(iter,n)
+        return function()
+            local result = nil
+            for i=1,n do
+                local e = iter()
+                if e == nil then
+                    return result
+                else
+                    if result == nil then
+                        result = {}
+                    end
+                    table.insert(result,e)
+                end
+            end
+            return result
+        end
+    end
+
     local function _map(iter,f)
         if f == nil then
             error("f must be of type function, but was nil")
@@ -258,6 +276,18 @@ function stream(input)
         return result
     end
 
+    local function _shuffle(iter)
+        local result = _toarray(iter)
+        local rand = math.random
+        local iterations = #result
+        local j
+        for i = iterations, 2, -1 do
+            j = rand(i)
+            result[i], result[j] = result[j], result[i]
+        end
+        return _iterator(result)
+    end
+
     local function _group(iter,f)
         if f == nil then
             error("f must be of type function, but was nil")
@@ -308,6 +338,46 @@ function stream(input)
         local it1 = pull(true,a1,a2)
         local it2 = pull(false,a2,a1)
         return stream(it1), stream(it2)
+    end
+
+    local function _merge(itarr)
+      local idx = 1
+      return function()
+        local len = #itarr
+        if len == 0 then
+          return nil
+        end
+        for i=1,len do
+          if idx > len then
+            idx = 1
+          end
+          local it = itarr[idx]
+          local e = it()
+          if e ~= nil then
+            idx = idx + 1
+            return e
+          else
+            table.remove(itarr, idx)
+            len = #itarr
+          end
+        end
+
+        local nilcount = 0
+        local result = {}
+        for i,it in ipairs(itarr) do
+          local e = it()
+          if e == nil then
+            nilcount = nilcount + 1
+          else
+            result[i-nilcount] = e
+          end
+        end
+        if nilcount >= #itarr then
+          return nil
+        else
+          return result
+        end
+      end
     end
 
     local function _reduce(iter,init,op)
@@ -452,6 +522,10 @@ function stream(input)
             filter = function(p)
                 return stream(_filter(iter,p))
             end,
+            -- Returns a stream consisting of chunks, made of n adjacent elements of the original stream.
+            pack = function(n)
+                return stream(_pack(iter,n))
+            end,
             -- Returns a stream consisting of the results of applying the given function
             -- to the elements of this stream.
             map = function(f)
@@ -489,6 +563,11 @@ function stream(input)
             toarray = function()
                 return _toarray(iter)
             end,
+            -- Returns a stream consisting of the elements of this stream, ordered randomly.
+            -- Call math.randomseed( os.time() ) first to get nice random orders.
+            shuffle = function()
+                return stream(_shuffle(iter))
+            end,
             -- Returns a table which is grouping the elements of this stream by keys provided from
             -- the specified classification function.
             group = function(f)
@@ -498,6 +577,16 @@ function stream(input)
             -- separated by the given predicate.
             split = function(f)
                 return _split(iter,f)
+            end,
+            -- Returns a lazily merged stream whose elements are all the elements of this stream
+            -- and of the streams provided by the varargs parameter. The elements are taken from all
+            -- streams round-robin.
+            merge = function(...)
+                local itarr = {iter}
+                for i,s in ipairs({...}) do
+                    itarr[i+1] = s.iter()
+                end
+                return stream(_merge(itarr))
             end,
             -- Returns the result of the given collector that is supplied
             -- with an iterator for the elements of this stream.
