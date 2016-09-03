@@ -7,6 +7,15 @@ function check(cond, format, ...)
   assert(cond, message)
 end
 
+function assert_equals(aact, aexp)
+  check(#aact == #aexp, "#aact=%s, #aexp=%s", #aact, #aexp)
+  for i=1,#aact do
+    local exp = aexp[i]
+    local act = aact[i]
+    check(act == exp, "act=%s, exp=%s", act, exp)
+  end
+end
+
 do
   print("Testing toarray")
   local aexp = {1,2,3,4,5}
@@ -368,6 +377,32 @@ do
 end
 
 do
+  print("Testing merge 1")
+  local aexp = {1,5,2,6,3,7,4,8,9}
+  local aact = stream({1,2,3,4}).merge(stream({5,6,7,8,9})).toarray()
+
+  check(#aact == #aexp, "#aact=%s, #aexp=%s", #aact, #aexp)
+  for i=1,#aact do
+    local exp = aexp[i]
+    local act = aact[i]
+    check(act == exp, "act=%s, exp=%s", act, exp)
+  end
+end
+
+do
+  print("Testing merge 2")
+  local aexp = {1,5,7,2,6,8,3,9,4}
+  local aact = stream({1,2,3,4}).merge(stream({5,6}),stream({7,8,9})).toarray()
+
+  check(#aact == #aexp, "#aact=%s, #aexp=%s", #aact, #aexp)
+  for i=1,#aact do
+    local exp = aexp[i]
+    local act = aact[i]
+    check(act == exp, "act=%s, exp=%s", act, exp)
+  end
+end
+
+do
   print("Testing group")
   local function is_odd(x)
     return x%2==0
@@ -436,4 +471,17 @@ do
   local act = stream({1,2,3,4,5}).reduce(0,add)
   local exp = 15
   check(act == exp, "act=%s, exp=%s", act, exp)
+end
+
+do
+  print("Testing pack")
+  local aexp = {{1,2},{3,4},{5,6},{7,8},{9}}
+  local aact = stream({1,2,3,4,5,6,7,8,9}).pack(2).toarray()
+
+  check(#aact == #aexp, "#aact=%s, #aexp=%s", #aact, #aexp)
+  for i=1,#aact do
+    local exp = aexp[i]
+    local act = aact[i]
+    assert_equals(act,exp)
+  end
 end
