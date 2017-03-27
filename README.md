@@ -209,12 +209,12 @@ This produces the following output:
 2
 ```
 ### Getting the last element of a stream
-Analogous to ```first()``` there is a ```last()``` operation that returns the last element of the stream.
+The ```last()``` operation returns the last element of the stream.
 ```lua
 st = stream({1,2,3})
 print(st.last())
 ```
-In contrast to ```first()``` this can only be called once, since it consumes all elements from the stream in order to find the last one. Subsequent calls will simply return ```nil```.
+In contrast to ```next()``` this can only be called once, since it consumes all elements from the stream in order to find the last one. Subsequent calls will simply return ```nil```.
 
 ### Looping over the elements with a consumer function
 Another option for getting all elements of the stream is the ```foreach()``` operation.
