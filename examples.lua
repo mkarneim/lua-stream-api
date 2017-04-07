@@ -69,7 +69,17 @@ end
 function sum(a,b)
     return a+b
 end
-
+function printarray(a)
+    print(unpack(a))
+end
+function sumarray(a)
+    local r = 0
+    for i=1,#a do
+      r=r+a[i]
+    end
+    return r
+end
+function
 -- Here starts the demo:
 
 print("iter")
